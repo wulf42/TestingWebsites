@@ -2,6 +2,10 @@ describe('Testing onet.pl',() => {
 
     beforeEach(() => {
         cy.visit('https://www.onet.pl');  
+        cy.setCookie(
+            "cookies_consent",
+            JSON.stringify({ cookies_analytics: "granted", cookies_marketing: "granted" })
+            )      
     })
 
     it('contains Onet in title', () => {
