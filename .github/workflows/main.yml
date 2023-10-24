@@ -12,7 +12,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '20'
 
       - name: Install Dependencies
         run: npm install
@@ -20,6 +20,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npx http-server -p 8080 # Zmienić na odpowiednią komendę do serwowania strony
-          wait-on: 'http://localhost:8080' # Oczekuje na serwer lokalny
+          start: npx http-server -p 8080 
+          wait-on: 'http://localhost:8080' 
         timeout-minutes: 10
