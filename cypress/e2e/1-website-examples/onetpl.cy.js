@@ -4,22 +4,23 @@ describe('Testing onet.pl',() => {
         cy.visit('https://www.onet.pl');  
     })
 
-    it('contains Onet in title', () => {
+    it('should contain Onet in title', () => {
         cy.title().should('contain', 'Onet')
     })
 
-    it('search enginge works corretcly', () => {
+    it('should correctly search for a query', () => {
         cy.get('[class^="Search_field"]').type('testowe wyszukanie');
         cy.get('[class^="Search_button"]').click();
+        cy.get('[class^="SearchPanel-module"]').should('be.visible'); 
         cy.url().should('contain', 'https://szukaj.onet.pl/wyniki.html?qt=testowe+wyszukanie')
     })
-    it('website renders navbar correctly',()=>{
+    it('should render the navbar correctly',()=>{
         cy.get('[class^="Menu_navContainer"]').should('be.visible');
         cy.get('[class^="Menu_navWrapper"]').should('be.visible');
         cy.get('[class^="Menu_navMenuListItem"]').should('be.visible');
     })
     
-    it('navbar contains correct names and links',()=>{
+    it('should have correct names and links in the navbar',()=>{
         const manuPositions = [
             {name: 'Wiadomości', link: 'https://wiadomosci.onet.pl/'},
             {name: 'Sport', link: 'https://przegladsportowy.onet.pl/'},
