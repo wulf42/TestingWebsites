@@ -1,8 +1,14 @@
 describe('Testing onet.pl',() => {    
 
     beforeEach(() => {
-        cy.visit('https://www.onet.pl');  
-    })
+        //visit onet.pl
+        cy.visit('https://www.onet.pl');
+        //acept cookies  (Testing on electron browser)
+        cy.get('[class^="cmp-button_button cmp-intro_acceptAll"]').should('exist')
+        cy.get('[class^="cmp-button_button cmp-intro_acceptAll"]').click();
+        cy.get('[class^="cmp-button_button cmp-intro_acceptAll"]').should('not.be.visible')
+        });
+    
 
     it('should contain Onet in title', () => {
         cy.title().should('contain', 'Onet')
@@ -12,7 +18,7 @@ describe('Testing onet.pl',() => {
         cy.get('[class^="Search_field"]').type('testowe wyszukanie');
         cy.get('[class^="Search_button"]').click();
         cy.get('[class^="SearchPanel-module"]').should('be.visible'); 
-        cy.url().should('contain', 'https://szukaj.onet.pl/wyniki.html?qt=testowe+wyszukanie')
+        cy.url().should('include', 'https://szukaj.onet.pl/wyniki/?qt=testowe+wyszukanie');
     })
     it('should render the navbar correctly',()=>{
         cy.get('[class^="Menu_navContainer"]').should('be.visible');
