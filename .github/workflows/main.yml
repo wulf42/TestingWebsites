@@ -25,7 +25,7 @@ jobs:
         timeout-minutes: 10
        
       - name: Upload Cypress Screenshots
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: cypress-screenshots
           path: /home/runner/work/TestingWebsites/TestingWebsites/cypress/screenshots
