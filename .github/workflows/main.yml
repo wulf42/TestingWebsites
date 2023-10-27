@@ -23,3 +23,9 @@ jobs:
           start: npx http-server -p 8080 
           wait-on: 'http://localhost:8080' 
         timeout-minutes: 10
+       
+      - name: Upload Cypress Screenshots
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-screenshots
+          path: /home/runner/work/TestingWebsites/TestingWebsites/cypress/screenshots
